@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Master & Content Based Web Site</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <link href="styles/style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+</head>
+<body>
+    <section>
+        <form id="form0" runat="server">
+            <header>
+                <h1>Classes & Registration Web-Site</h1>
+            </header>
+
+            <nav>
+                <asp:Menu ID="Menu1" runat="server" BackColor="#777777" StaticSubMenuIndent="10px"
+                    Font-Size="1.2em" ForeColor="#000000" Orientation="Horizontal" Height="100%">
+
+                    <DynamicMenuItemStyle HorizontalPadding="15px" VerticalPadding="11px" />
+                    <DynamicHoverStyle BackColor="#555555" ForeColor="#b87333" />
+                    <DynamicSelectedStyle BackColor="#555555" ForeColor="#b87333" />
+                    <DynamicMenuStyle BackColor="#555555" />
+
+                    <StaticMenuItemStyle HorizontalPadding="15px" VerticalPadding="11px" />
+                    <StaticHoverStyle BackColor="#555555" ForeColor="#b87333" />
+                    <StaticSelectedStyle BackColor="#555555" ForeColor="#b87333" />
+
+                    <Items>
+                        <asp:MenuItem Text="Home" Value="Home" NavigateUrl="~/Default.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Classes" Value="Classes" NavigateUrl="~/Classes.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Login Request" Value="Login Request" NavigateUrl="~/LoginRequest.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Login" Value="Login" NavigateUrl="~/Login.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Register" Value="Register" NavigateUrl="~/Register.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="My Classes" Value="My Classes" NavigateUrl="~/MyClasses.aspx"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </nav>
+
+            <main>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server" />
+            </main>
+
+            <aside>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server" />
+            </aside>
+
+            <div class="clear"></div>
+
+            <footer>Copyright &copy; 2018</footer>
+        </form>
+    </section>
+</body>
+</html>

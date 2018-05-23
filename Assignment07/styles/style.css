@@ -1,0 +1,112 @@
+﻿body {
+    background: #777;
+    color: #bbb;
+    font-family: Verdana;
+    line-height: 1.2em;
+}
+
+h1 {
+    line-height: 1em;
+    color: violet;
+}
+
+a {
+    color: #bbb;
+    text-decoration: none;
+}
+
+ul {
+    padding: 0;
+}
+
+section {
+    background: #555;
+    width: 960px;
+    margin: 20px auto;
+    overflow: hidden;
+    padding: 10px;
+}
+
+nav {
+    height: 40px;
+    background: #777;
+    overflow: hidden;
+}
+
+    nav ul {
+        padding: 15px 0 0 10px;
+        padding-top: 12px;
+        padding-left: 20px;
+    }
+
+    nav li {
+        list-style: none;
+        float: left;
+        padding-right: 20px;
+    }
+
+    nav .active {
+        font-weight: bold;
+        color: #000;
+    }
+
+main {
+    float: left;
+    width: 60%;
+}
+
+aside {
+    float: right;
+    width: 30%;
+    background: #777;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #777;
+    margin-top: 10px;
+}
+
+#email ul {
+    list-style-type: none;
+}
+
+.Table {
+    display: table;
+    padding: 3px;
+}
+
+.TableRow {
+    display: table-row;
+}
+
+.TableFoot {
+    display: table-caption;
+    caption-side: bottom;
+    text-align: center;
+}
+
+.TableCell {
+    display: table-cell;
+    padding: 3px;
+}
+
+.ActivePageMenuItem {
+    background-color: #555555;
+    color: violet;
+}
+
+.RoundedButton {
+}
+
+.tableimage {
+    width: 100%;
+    height: auto;
+}
