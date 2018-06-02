@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 
@@ -14,10 +15,7 @@ public partial class LoginRequest : System.Web.UI.Page
         OleDbCommand cmd = new OleDbCommand();
         try
         {   //1. Make a Connection
-            string strOledbConnection = @"Provider=SQLOLEDB;
-                                    Data Source=.;
-                                    Integrated Security=SSPI;
-                                    Initial Catalog=ASPNetHomework";
+            string strOledbConnection = ConfigurationManager.ConnectionStrings["AdvWebProjectConnectionString"].ConnectionString;
             conn.ConnectionString = strOledbConnection;
             conn.Open();
 
