@@ -37,6 +37,23 @@
                     <asp:TextBox runat="server" ID="tbReasons" Width="400px" Rows="5" TextMode="MultiLine" />
                 </div>
             </div>
+            <div class="TableRow">
+                <div class="TableCell" style="vertical-align: top">New Login?</div>
+                <div class="TableCell">
+                    <asp:RadioButton ID="RadioButtonNew" runat="server" Text="New Login"
+                        CssClass="style2" Checked="True" GroupName="LoginType" />
+                    &nbsp;<asp:RadioButton ID="RadioButtonReactivate" runat="server" Text="Reactivate Login"
+                        CssClass="style1" GroupName="LoginType" />
+                </div>
+            </div>
+            <div class="TableRow">
+                <div class="TableCell" style="vertical-align: top">
+                    Date access needed by:
+                </div>
+                <div class="TableCell">
+                    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                </div>
+            </div>
             <div class="TableFoot">
                 <asp:Button runat="server" ID="Button1" Text="Submit" OnClick="Button1_Click" CssClass="RoundedButton" />
             </div>
