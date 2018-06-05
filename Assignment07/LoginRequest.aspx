@@ -61,9 +61,12 @@
     </div>
 </asp:Content>
 <asp:Content ID="ContentMain2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    <div>
-        <asp:Label ID="Label1" runat="server" Text="The Number of Databases is: " Style="font-size: large"></asp:Label>
-    </div>
 </asp:Content>
 <asp:Content ID="ContentAside" ContentPlaceHolderID="ContentPlaceHolder3" runat="Server">
+    <p>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="LogOutButton" runat="server" Text="Log Out" OnClick="LogOutButton_Click" />
+    </p>
 </asp:Content>

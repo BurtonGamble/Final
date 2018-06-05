@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web.UI;
 using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
@@ -11,6 +10,11 @@ public partial class LoginRequest : System.Web.UI.Page
         if (IsPostBack != true)
         {
             Calendar1.SelectedDate = DateTime.Today;
+        }
+
+        if (Session["objP"] != null)
+        {
+            Label1.Text = "You are currently logged in as '" + ((Person)Session["objP"]).LoginName + "'.";
         }
     }
 
@@ -31,48 +35,48 @@ public partial class LoginRequest : System.Web.UI.Page
 
             //@Name ,
             OleDbParameter objParamName = new OleDbParameter();
-            objParamName.Direction = System.Data.ParameterDirection.Input;
-            objParamName.DbType = System.Data.DbType.String;
+            objParamName.Direction = ParameterDirection.Input;
+            objParamName.DbType = DbType.String;
             objParamName.ParameterName = "@Name";
             objParamName.Value = tbName.Text;
             cmd.Parameters.Add(objParamName);
 
             //@EmailAddress,
             OleDbParameter objParamEmailAddress = new OleDbParameter();
-            objParamEmailAddress.Direction = System.Data.ParameterDirection.Input;
-            objParamEmailAddress.DbType = System.Data.DbType.String;
+            objParamEmailAddress.Direction = ParameterDirection.Input;
+            objParamEmailAddress.DbType = DbType.String;
             objParamEmailAddress.ParameterName = "@EmailAddress";
             objParamEmailAddress.Value = tbEmail.Text;
             cmd.Parameters.Add(objParamEmailAddress);
 
             //@LoginName,
             OleDbParameter objParamLoginName = new OleDbParameter();
-            objParamLoginName.Direction = System.Data.ParameterDirection.Input;
-            objParamLoginName.DbType = System.Data.DbType.String;
+            objParamLoginName.Direction = ParameterDirection.Input;
+            objParamLoginName.DbType = DbType.String;
             objParamLoginName.ParameterName = "@LoginName";
             objParamLoginName.Value = tbHandle.Text;
             cmd.Parameters.Add(objParamLoginName);
 
             //@NewOrReactivate,
             OleDbParameter objParamNewOrReactivate = new OleDbParameter();
-            objParamNewOrReactivate.Direction = System.Data.ParameterDirection.Input;
-            objParamNewOrReactivate.DbType = System.Data.DbType.String;
+            objParamNewOrReactivate.Direction = ParameterDirection.Input;
+            objParamNewOrReactivate.DbType = DbType.String;
             objParamNewOrReactivate.ParameterName = "@NewOrReactivate";
             objParamNewOrReactivate.Value = (RadioButtonNew.Checked == true ? "New" : "Reactivate");
             cmd.Parameters.Add(objParamNewOrReactivate);
 
             //@ReasonForAccess,
             OleDbParameter objParamReasonForAccess = new OleDbParameter();
-            objParamReasonForAccess.Direction = System.Data.ParameterDirection.Input;
-            objParamReasonForAccess.DbType = System.Data.DbType.String;
+            objParamReasonForAccess.Direction = ParameterDirection.Input;
+            objParamReasonForAccess.DbType = DbType.String;
             objParamReasonForAccess.ParameterName = "@ReasonForAccess";
             objParamReasonForAccess.Value = tbReasons.Text;
             cmd.Parameters.Add(objParamReasonForAccess);
 
             //@DateNeededBy
             OleDbParameter objParamDateNeededBy = new OleDbParameter();
-            objParamDateNeededBy.Direction = System.Data.ParameterDirection.Input;
-            objParamDateNeededBy.DbType = System.Data.DbType.String;
+            objParamDateNeededBy.Direction = ParameterDirection.Input;
+            objParamDateNeededBy.DbType = DbType.DateTime;
             objParamDateNeededBy.ParameterName = "@DateNeededBy";
             objParamDateNeededBy.Value = Calendar1.SelectedDate.ToShortDateString();
             cmd.Parameters.Add(objParamDateNeededBy);
@@ -92,5 +96,11 @@ public partial class LoginRequest : System.Web.UI.Page
         {
             conn.Close();
         }
+    }
+
+    protected void LogOutButton_Click(object sender, EventArgs e)
+    {
+        Session.Clear();
+        Response.Redirect("Default.aspx");
     }
 }

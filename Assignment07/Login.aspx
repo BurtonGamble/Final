@@ -17,12 +17,17 @@
                 <div class="TableCell">User Name:</div>
                 <div class="TableCell">
                     <asp:TextBox runat="server" ID="tbUserName" Width="200px" placeholder="Rincewind" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                        ControlToValidate="tbUserName" ErrorMessage="Please enter your Student login &lt;br/&gt;(ex. Rincewind)"
+                        ForeColor="White">*</asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="TableRow">
                 <div class="TableCell">Password:</div>
                 <div class="TableCell">
                     <asp:TextBox runat="server" ID="tbPassword" Width="200px" placeholder="•••••™" TextMode="Password" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                        ControlToValidate="tbPassword" ErrorMessage="Please enter your student password" ForeColor="White">*</asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="TableFoot">
@@ -34,5 +39,10 @@
 <asp:Content ID="ContentMain2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 </asp:Content>
 <asp:Content ID="ContentSide" ContentPlaceHolderID="ContentPlaceHolder3" runat="Server">
-    <asp:Label ID="Label1" runat="server" Text="Label 1"></asp:Label>
+    <p>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="LogOutButton" runat="server" Text="Log Out" OnClick="LogOutButton_Click" />
+    </p>
 </asp:Content>

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 public partial class Classes : System.Web.UI.Page
@@ -14,38 +11,50 @@ public partial class Classes : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            //BindListView();
+            BindData();
+        }
+
+        if (Session["objP"] != null)
+        {
+            Label1.Text = "You are currently logged in as '" + ((Person)Session["objP"]).LoginName + "'.";
         }
     }
 
-    private void BindListView()
+    private void BindData()
     {
+        DataTable dt = new DataTable();
         OleDbConnection conn = new OleDbConnection();
         OleDbCommand cmd = new OleDbCommand();
         try
         {   //1. Make a Connection
-            string connStr = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
-            conn.ConnectionString = connStr;
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["AdvWebProjectConnectionString"].ConnectionString;
             conn.Open();
 
             //2. Issue a Command
             cmd.Connection = conn;
-            cmd.CommandText = "pSelCategories";
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.ExecuteNonQuery();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT [ClassId], [ClassName], [ClassDate], [ClassDescription] FROM [vClasses]";
 
             //3. Process the Results
-            Label1.Text += "Request Submitted Successfully.";
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            da.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
         }
         catch (Exception ex)
         {
-            Label1.Text += "<b>" + cmd.CommandText.ToString() + "</b><br /><br />";
+            Label1.Text += " < b>" + cmd.CommandText.ToString() + "</b><br /><br />";
             Label1.Text += ex.ToString();
         }
         finally
         {
             conn.Close();
         }
+    }
+
+    protected void LogOutButton_Click(object sender, EventArgs e)
+    {
+        Session.Clear();
+        Response.Redirect("Default.aspx");
     }
 }

@@ -36,7 +36,6 @@
     </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSourceClasses" runat="server"
             ConnectionString="<%$ ConnectionStrings:AdvWebProjectConnectionString %>"
-            ProviderName="<%$ ConnectionStrings:AdvWebProjectConnectionString.ProviderName %>"
             SelectCommand="SELECT * FROM [Classes]" DataSourceMode="DataReader"></asp:SqlDataSource>
     </p>
 
@@ -65,7 +64,6 @@
     </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSourceClassStudents" runat="server"
             ConnectionString="<%$ ConnectionStrings:AdvWebProjectConnectionString %>"
-            ProviderName="<%$ ConnectionStrings:AdvWebProjectConnectionString.ProviderName %>"
             SelectCommand="SELECT * FROM [ClassStudents]" DataSourceMode="DataReader"></asp:SqlDataSource>
     </p>
 
@@ -100,7 +98,6 @@
     </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSourceStudents" runat="server"
             ConnectionString="<%$ ConnectionStrings:AdvWebProjectConnectionString %>"
-            ProviderName="<%$ ConnectionStrings:AdvWebProjectConnectionString.ProviderName %>"
             SelectCommand="SELECT * FROM [Students]" DataSourceMode="DataReader"></asp:SqlDataSource>
     </p>
 
@@ -139,7 +136,6 @@
     </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSourceLoginRequest" runat="server"
             ConnectionString="<%$ ConnectionStrings:AdvWebProjectConnectionString %>"
-            ProviderName="<%$ ConnectionStrings:AdvWebProjectConnectionString.ProviderName %>"
             SelectCommand="SELECT * FROM [LoginRequests]" DataSourceMode="DataReader"></asp:SqlDataSource>
     </p>
 
@@ -166,8 +162,6 @@
     </p>
     <asp:SqlDataSource ID="SqlDataSourceSprocesAndViews" runat="server"
         ConnectionString="<%$ ConnectionStrings:AdvWebProjectConnectionString %>"
-        ProviderName="<%$ ConnectionStrings:AdvWebProjectConnectionString.ProviderName %>"
-        SelectCommand="Select Name  from SysObjects Where xType in ('p', 'v')
-"
+        SelectCommand="Select Name from SysObjects Where xType in ('p', 'v')"
         DataSourceMode="DataReader"></asp:SqlDataSource>
 </asp:Content>

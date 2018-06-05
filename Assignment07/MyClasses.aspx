@@ -11,7 +11,7 @@
     <h1>My Classes</h1>
     <p>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
-            DataKeyNames="ClassId" DataSourceID="SqlDataSourceClasses"
+            DataKeyNames="ClassId"
             BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px"
             CellPadding="4" ForeColor="Black" GridLines="Vertical">
             <AlternatingRowStyle BackColor="White" />
@@ -35,18 +35,17 @@
             <SortedDescendingCellStyle BackColor="#EAEAD3" />
             <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceClasses" runat="server"
-            ConnectionString="<%$ ConnectionStrings:AdvWebProjectConnectionString %>"
-            ProviderName="<%$ ConnectionStrings:AdvWebProjectConnectionString.ProviderName %>"
-            SelectCommand="SELECT * FROM [Classes]" DataSourceMode="DataReader"></asp:SqlDataSource>
     </p>
 </asp:Content>
 <asp:Content ID="ContentMain2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     <br />
     <asp:Button ID="Button1" runat="server" Text="Log Out!" OnClick="Button1_Click" />
 </asp:Content>
 <asp:Content ID="ContentSide" ContentPlaceHolderID="ContentPlaceHolder3" runat="Server">
-    <h1>Name of selected Class</h1>
-    Description of selected/highlighted class goes here.
+    <p>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="LogOutButton" runat="server" Text="Log Out" OnClick="LogOutButton_Click" />
+    </p>
 </asp:Content>
