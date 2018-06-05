@@ -16,7 +16,6 @@
             CellPadding="4" ForeColor="Black" GridLines="Vertical">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:CommandField ButtonType="Button" SelectText="" ShowSelectButton="True" />
                 <asp:BoundField DataField="ClassId" HeaderText="ClassId" ReadOnly="True"
                     SortExpression="ClassId" />
                 <asp:BoundField DataField="ClassName" HeaderText="ClassName"
@@ -27,7 +26,7 @@
                     SortExpression="ClassDescription" />
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
-            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#6B696B" ForeColor="White" />
             <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
             <RowStyle BackColor="#F7F7DE" />
             <SelectedRowStyle BackColor="violet" ForeColor="Black" />

@@ -26,7 +26,7 @@
                     SortExpression="ClassDescription" />
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
-            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#6B696B" ForeColor="White" />
             <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
             <RowStyle BackColor="#F7F7DE" />
             <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
@@ -38,8 +38,6 @@
     </p>
 </asp:Content>
 <asp:Content ID="ContentMain2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    <br />
-    <asp:Button ID="Button1" runat="server" Text="Log Out!" OnClick="Button1_Click" />
 </asp:Content>
 <asp:Content ID="ContentSide" ContentPlaceHolderID="ContentPlaceHolder3" runat="Server">
     <p>

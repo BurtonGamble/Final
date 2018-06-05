@@ -18,12 +18,6 @@ public partial class MyClasses : System.Web.UI.Page
         }
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Session.Clear();
-        Response.Redirect("Default.aspx");
-    }
-
     private void BindData()
     {
         DataTable dt = new DataTable();
