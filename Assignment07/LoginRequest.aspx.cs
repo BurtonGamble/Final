@@ -33,58 +33,65 @@ public partial class LoginRequest : System.Web.UI.Page
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = @"pInsLoginRequests";
 
-            //@Name ,
+            //@Name,
             OleDbParameter objParamName = new OleDbParameter();
+            objParamName.OleDbType = OleDbType.VarChar;
             objParamName.Direction = ParameterDirection.Input;
-            objParamName.DbType = DbType.String;
             objParamName.ParameterName = "@Name";
             objParamName.Value = tbName.Text;
             cmd.Parameters.Add(objParamName);
 
             //@EmailAddress,
             OleDbParameter objParamEmailAddress = new OleDbParameter();
-            objParamEmailAddress.Direction = ParameterDirection.Input;
-            objParamEmailAddress.DbType = DbType.String;
+            objParamName.OleDbType = OleDbType.VarChar;
+            objParamName.Direction = ParameterDirection.Input;
             objParamEmailAddress.ParameterName = "@EmailAddress";
             objParamEmailAddress.Value = tbEmail.Text;
             cmd.Parameters.Add(objParamEmailAddress);
 
             //@LoginName,
             OleDbParameter objParamLoginName = new OleDbParameter();
-            objParamLoginName.Direction = ParameterDirection.Input;
-            objParamLoginName.DbType = DbType.String;
+            objParamName.OleDbType = OleDbType.VarChar;
+            objParamName.Direction = ParameterDirection.Input;
             objParamLoginName.ParameterName = "@LoginName";
             objParamLoginName.Value = tbHandle.Text;
             cmd.Parameters.Add(objParamLoginName);
 
             //@NewOrReactivate,
             OleDbParameter objParamNewOrReactivate = new OleDbParameter();
-            objParamNewOrReactivate.Direction = ParameterDirection.Input;
-            objParamNewOrReactivate.DbType = DbType.String;
+            objParamName.OleDbType = OleDbType.VarChar;
+            objParamName.Direction = ParameterDirection.Input;
             objParamNewOrReactivate.ParameterName = "@NewOrReactivate";
             objParamNewOrReactivate.Value = (RadioButtonNew.Checked == true ? "New" : "Reactivate");
             cmd.Parameters.Add(objParamNewOrReactivate);
 
             //@ReasonForAccess,
             OleDbParameter objParamReasonForAccess = new OleDbParameter();
+            objParamReasonForAccess.OleDbType = OleDbType.VarChar;
             objParamReasonForAccess.Direction = ParameterDirection.Input;
-            objParamReasonForAccess.DbType = DbType.String;
             objParamReasonForAccess.ParameterName = "@ReasonForAccess";
             objParamReasonForAccess.Value = tbReasons.Text;
             cmd.Parameters.Add(objParamReasonForAccess);
 
             //@DateNeededBy
             OleDbParameter objParamDateNeededBy = new OleDbParameter();
+            objParamDateNeededBy.OleDbType = OleDbType.Date;
             objParamDateNeededBy.Direction = ParameterDirection.Input;
-            objParamDateNeededBy.DbType = DbType.DateTime;
-            objParamDateNeededBy.ParameterName = "@DateNeededBy";
+            objParamDateNeededBy.ParameterName = "@DateRequiredBy";
             objParamDateNeededBy.Value = Calendar1.SelectedDate.ToShortDateString();
             cmd.Parameters.Add(objParamDateNeededBy);
 
-            int RowsAffected = cmd.ExecuteNonQuery();
+            // Create the return paramenter, set the properites and add to command).
+            OleDbParameter retParam = new OleDbParameter();
+            retParam.OleDbType = OleDbType.Integer;
+            retParam.Direction = ParameterDirection.ReturnValue;
+            retParam.ParameterName = "@LoginID";
+            cmd.Parameters.Add(retParam);
+
+            cmd.ExecuteNonQuery();
 
             //3. Process the Results
-            Label1.Text += "Request Submitted Successfully.";
+            Label1.Text += "Request Submitted Successfully.\nStudent ID# " + (int)cmd.Parameters["@LoginID"].Value;
         }
         catch (Exception ex)
         {
