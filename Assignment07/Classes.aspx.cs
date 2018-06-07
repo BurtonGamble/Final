@@ -33,7 +33,7 @@ public partial class Classes : System.Web.UI.Page
             //2. Issue a Command
             cmd.Connection = conn;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT [ClassId], [ClassName], [ClassDate], [ClassDescription] FROM [vClasses]";
+            cmd.CommandText = "SELECT * FROM [vClasses]";
 
             //3. Process the Results
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
