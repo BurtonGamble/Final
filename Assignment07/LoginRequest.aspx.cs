@@ -33,6 +33,21 @@ public partial class LoginRequest : System.Web.UI.Page
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = @"pInsLoginRequests";
 
+            // Create the return paramenter, set the properites and add to command).
+            //@RC
+            OleDbParameter retParam = new OleDbParameter();
+            retParam.OleDbType = OleDbType.Integer;
+            retParam.Direction = ParameterDirection.ReturnValue;
+            retParam.ParameterName = "@RC";
+            cmd.Parameters.Add(retParam);
+
+            //@LoginID
+            OleDbParameter outParam = new OleDbParameter();
+            outParam.OleDbType = OleDbType.Integer;
+            outParam.Direction = ParameterDirection.Output;
+            outParam.ParameterName = "@LoginID";
+            cmd.Parameters.Add(outParam);
+
             //@Name,
             OleDbParameter objParamName = new OleDbParameter();
             objParamName.OleDbType = OleDbType.VarChar;
@@ -80,13 +95,6 @@ public partial class LoginRequest : System.Web.UI.Page
             objParamDateNeededBy.ParameterName = "@DateRequiredBy";
             objParamDateNeededBy.Value = Calendar1.SelectedDate.ToShortDateString();
             cmd.Parameters.Add(objParamDateNeededBy);
-
-            // Create the return paramenter, set the properites and add to command).
-            OleDbParameter retParam = new OleDbParameter();
-            retParam.OleDbType = OleDbType.Integer;
-            retParam.Direction = ParameterDirection.ReturnValue;
-            retParam.ParameterName = "@LoginID";
-            cmd.Parameters.Add(retParam);
 
             cmd.ExecuteNonQuery();
 
